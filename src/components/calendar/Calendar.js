@@ -58,12 +58,16 @@ function Calendar() {
                 .startOf('week')
                 .add(index, 'day')
 
+              console.log(today.format('YYYY-MM-DD'))
+              console.log(days.format('YYYY-MM-DD'))
+              console.log('-------------------------')
+
               return (
                 <div
                   key={index}
                   className={'flex-1 border-t c-col min-h-[100px] mx-1'}
                 >
-                  <div className="w-full px-1">{days.format('DD')}</div>
+                  <div className={`w-full px-1 ${ _moment().format('YYYY-MM-DD') === days.format('YYYY-MM-DD') && 'bg-red-400 text-white'}`}>{days.format('DD')}</div>
                   <div className="flex flex-col justify-end">
                     {todoList.map((todo, index) => {
                       if (days.format('YYYY.MM.DD') === todo.startDate) {
